@@ -3,7 +3,7 @@ import { ProductsService } from './products.service';
 import { Prisma } from '@prisma/client';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
-@Controller('products')
+@Controller('api/products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService,
   ) {}

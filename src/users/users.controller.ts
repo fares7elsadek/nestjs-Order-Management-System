@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 import { UpdateCartDto } from './dtos/updateCart.dto';
 
-@Controller('users')
+@Controller('api')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -13,7 +13,7 @@ export class UsersController {
   AddToCart(@Param('id') id: string,@Req() req:Request,@Body('quantity') quantity:number) {
     return this.usersService.AddToCart(id,req,quantity);
   }
-
+  
   @Get('/cart/:userId')
   @UseGuards(JwtAuthGuard)
   ViewCart(@Param('userId') userId: string,@Req() req:Request) {
@@ -31,5 +31,12 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   RemoveFromCart(@Param('productId') id: string,@Req() req:Request) {
     return this.usersService.RemoveFromCart(id,req);
+  }
+
+
+  @Get('/users/:userId/orders')
+  @UseGuards(JwtAuthGuard)
+  ordersHistory(@Param('userId') userId: string) {
+    return this.usersService.ordersHistory(userId);
   }
 }

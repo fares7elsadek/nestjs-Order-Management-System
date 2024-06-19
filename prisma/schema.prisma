@@ -21,6 +21,7 @@ model User {
   address  String
   orders   Order[]
   cart     Cart?
+  appliedCoupons Coupon[]
 }
 
 model Order {
@@ -55,6 +56,7 @@ model Cart {
   cartId   String    @id @default(uuid())
   user     User      @relation(fields: [user_id], references: [userId])
   user_id  String    @unique
+  total_price Decimal @default(0)
   cartProducts CartProduct[]
 }
 
@@ -67,6 +69,15 @@ model CartProduct {
   quantity      Int
 
   @@unique([cartId, productId])
+}
+
+
+model Coupon{
+  couponId String @id @default(uuid())
+  discount Int
+  valid Boolean @default(true)
+  coupon String
+  appliedUsers User[]
 }
 
 enum OrderStatus {

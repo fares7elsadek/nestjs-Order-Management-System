@@ -58,16 +58,77 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Routes
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Authentication
 
-## Stay in touch
+- Register
+  - `POST /api/auth/register`
+    - Register a new user with name, email, password, and address.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Login
+  - `POST /api/auth/login`
+    - Authenticate user with email and password.
 
-## License
+### Products
 
-Nest is [MIT licensed](LICENSE).
+- Add Product
+  - `POST /api/products`
+    - Add a new product with name, price, stock, and description.
+
+- Get Products
+  - `GET /api/products`
+    - Retrieve all products.
+
+### Users
+
+- Add to Cart
+  - `POST /api/cart/add/:productid`
+    - Add a specified quantity of a product to the user's cart.
+
+- View User Cart
+  - `GET /api/cart/:userId`
+    - Retrieve the user's cart contents.
+
+- Update Cart
+  - `PUT /api/cart/update`
+    - Update the quantity of a product in the user's cart.
+
+- Remove Product from Cart
+  - `DELETE /api/cart/remove/:productid`
+    - Remove a product from the user's cart.
+
+- Order History
+  - `GET /api/users/:userid/orders`
+    - Retrieve the order history for a user.
+
+### Orders
+
+- Create New Order
+  - `POST /api/orders`
+    - Create a new order with selected products.
+
+- Get Order
+  - `GET /api/orders/:orderid`
+    - Retrieve details of a specific order.
+
+- Update Order Status
+  - `PUT /api/orders/:orderid/status`
+    - Update the status of a specific order.
+
+- Apply Coupon
+  - `POST /api/orders/apply-coupon`
+    - Apply a coupon to the order.
+
+## Postman Collection
+
+You can view the API documentation and test requests using the Postman collection:
+
+[View Postman Collection](https://warped-space-529444.postman.co/workspace/Team-Workspace~72549520-0748-49eb-834b-b42255e87b3a/collection/27558883-23dab52e-0aad-4b68-aff9-a0c2c80d4dba?action=share&creator=27558883)
+
+---
+
+*Fares Elsadek*
+
+
+
