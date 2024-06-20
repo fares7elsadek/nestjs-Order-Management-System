@@ -58,6 +58,17 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Configuration
+
+Create a `.env` file in the root of your project and add the following configuration:
+
+```env
+DATABASE_URL=your_database_url_here
+JWT_SECRET=your_jwt_secret_here
+```
+
+
+
 ## Routes
 
 ### Authentication
